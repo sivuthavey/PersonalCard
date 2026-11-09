@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sivutha Vey</title>
+    
+    <link rel="stylesheet" href="style.css">    
+
+</head>
+<body>
+    <div class="question-box">
+        <div class="emoji">🤑</div>
+        <h2>តើអ្នកមានលុយចាយឬទេ?</h2>
+        <div class="buttons">
+            <button class="yes-btn" onclick="answerYes()">មាន 💵</button>
+            <button class="no-btn" onclick="answerNo()">អត់មានទេ 😂</button>
+        </div>
+    </div>
+    <div class="popup-overlay" id="yesPopup">
+        <div class="popup">
+            <div class="popup-emoji">💸</div>
+            <h3 style="color: #22c55e;">ខ្ចី 10$ ស្អែកសង 🤣</h3>
+            <button class="close-btn" onclick="closePopup('yesPopup')">បិទ 😂</button>
+        </div>
+    </div>
+    <div class="popup-overlay" id="noPopup">
+        <div class="popup">
+            <div class="popup-emoji">🤣</div>
+            <h3 style="color: #ef4444;">ហ្អែង! អត់ ពីណាមាន 😂</h3>
+            <button class="close-btn" onclick="closePopup('noPopup')">បិទ 😆</button>
+        </div>
+    </div>
+    <script>
+        function answerYes() {
+            document.getElementById("yesPopup").style.display = "flex";
+        }
+        function answerNo() {
+            document.getElementById("noPopup").style.display = "flex";
+        }
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = "none";
+        }
+        document.querySelectorAll(".popup-overlay").forEach(function(popup) {
+            popup.addEventListener("click", function(event) {
+                if (event.target === popup) {
+                    popup.style.display = "none";
+                }
+            });
+        });
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                document.querySelectorAll(".popup-overlay").forEach(function(popup) {
+                    popup.style.display = "none";
+                });
+            }
+        });
+    </script> 
+</body>
+</html>
